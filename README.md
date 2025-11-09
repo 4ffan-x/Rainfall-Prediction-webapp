@@ -1,74 +1,48 @@
-# Rainfall-Prediction-webapp
+# Rainfall-Prediction-Webapp 🌦️
 
-# 📌 Rainfall Prediction using Random Forest
+## 📌 Rainfall Prediction using Random Forest
 
-This project aims to predict whether rainfall will occur based on multiple meteorological features such as temperature, humidity, pressure, dew point, cloud cover, sunshine hours, wind direction, and wind speed.
+This project predicts whether rainfall will occur based on meteorological features like temperature, humidity, pressure, dew point, cloud cover, sunshine hours, wind direction, and wind speed.  
 
-A Random Forest Classifier is trained and optimized using GridSearchCV to improve prediction accuracy.
+A **Random Forest Classifier** is trained and optimized using **GridSearchCV** for better prediction accuracy.
 
+---
 
+## 🌐 Streamlit Web Interface
 
-# 📂 Dataset Overview
-The dataset used is Rainfall.csv containing 366 daily observations with the following columns:
+The application is deployed as a **Streamlit web app**. You can interactively input meteorological features and get instant rainfall predictions.
 
-Feature	Description
-pressure	Atmospheric pressure
-maxtemp	Maximum temperature of the day
-temparature	Average temperature
-mintemp	Minimum temperature
-dewpoint	Dew point level
-humidity	Humidity percentage
-cloud	Cloud coverage
-rainfall	Target variable (Yes/No → Converted to 1/0)
-sunshine	Hours of sunshine
-winddirection	Direction of wind (degrees)
-windspeed	Wind speed (km/h)
-🧹 Data Pre-processing Steps
+**Main Page Preview:**  
+![Streamlit App Preview](assets/mainpage.png)
 
-✅ Removed unnecessary features (day, maxtemp, temparature, mintemp)
-✅ Null values handled using median/mode
-✅ Converted rainfall labels:
+---
 
-yes → 1  
-no  → 0
+## 🧹 Data Pre-processing Steps
 
+✅ Removed unnecessary features (`day`, `maxtemp`, `temparature`, `mintemp`)  
+✅ Handled null values using median/mode  
+✅ Converted rainfall labels:  
 
-✅ Used downsampling to handle class imbalance
-✅ Data visualization with:
+- yes → 1  
+- no → 0  
 
-Histograms using histplot
+✅ Downsampled to handle class imbalance  
+✅ Visualized data with histograms, correlation heatmaps, and box plots  
 
-Correlation Heatmap
+---
 
-Box plots for outlier study
+## 🤖 Machine Learning Model
 
+**Model Used:** Random Forest Classifier  
 
-# 🤖 Machine Learning Model
-Model Used:
-🔹 Random Forest Classifier
+✅ Hyperparameter tuning with GridSearchCV  
+✅ Train-test split: 80% training / 20% testing  
+✅ Performance metrics: Accuracy, Confusion Matrix, Classification Report
 
-✅ Hyperparameter tuning with GridSearchCV
-✅ Train-test split: 80% training / 20% testing
-✅ Model performance measured using:
+**Grid Search Parameters:**
 
-Accuracy
-
-Confusion Matrix
-
-Classification Report
-
-# 🛠 Libraries Required
-numpy
-pandas
-matplotlib
-seaborn
-scikit-learn
-pickle
-
-# 📈 Model Optimization Grid
-
-The grid search tested different values for:
-
+```python
+# your Python code here
 param_grid = {
     'n_estimators': [50, 100, 200],
     'max_depth': [None, 10, 20],
@@ -76,21 +50,11 @@ param_grid = {
     'min_samples_leaf': [1, 2, 4],
     'max_features': ['sqrt', 'log2']
 }
+```
+---
 
+## 🐳 Docker Deployment
 
-⛔ Note: 'auto' parameter was removed since it's deprecated in newer sklearn versions.
+Run the Streamlit app locally from Docker Hub: <br>
 
-# ✅ Final Output
-
-The best model from GridSearchCV is used to:
-
-✔ Predict rainfall
-✔ Evaluate performance
-✔ Save model using pickle (optional extension)
-
-# 📌 Project Structure
-📁 Rainfall_Prediction
-│── Rainfall.csv
-│── model.pkl  (optional if exported)
-│── README.md
-└── rainfall_model.ipynb / .py (your code file)
+`docker pull 4ffan/rainfall`
